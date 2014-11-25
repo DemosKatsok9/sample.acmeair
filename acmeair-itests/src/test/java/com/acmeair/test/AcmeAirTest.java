@@ -30,7 +30,7 @@ public class AcmeAirTest {
         
     static {
         String httpPort = System.getProperty("httpPort", "9081");
-        baseURL = "http://localhost:" + httpPort + "/acmeair";
+        baseURL = "http://172.28.128.3:" + httpPort + "/acmeair";
     }
     
     @BeforeClass
@@ -43,7 +43,7 @@ public class AcmeAirTest {
         System.out.println("clientProtocol:" + client.getHostConfiguration().getProtocol());
         System.out.println("methouri :" + method.getURI());
         System.out.println("metod host auth :" + method.getHostAuthState());
-        
+        Thread.sleep(60000);
         try {
             int statusCode = client.executeMethod(method);
             assertEquals("HTTP GET failed", HttpStatus.SC_OK, statusCode);
