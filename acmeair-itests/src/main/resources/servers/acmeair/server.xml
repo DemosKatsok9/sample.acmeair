@@ -1,41 +1,39 @@
-<server description="acmeair">
+<server description="new server">
 
-    <!-- Enable features -->
-    <featureManager>
-        <feature>jsp-2.2</feature>
-        <feature>jaxrs-1.1</feature>
-        <feature>jndi-1.0</feature>
-        <feature>jdbc-4.0</feature>
-        <feature>jpa-2.0</feature>
-    </featureManager>
-    
-    <httpEndpoint id="defaultHttpEndpoint"
-                  host="*"
-                  httpPort="${httpPort}" >
-      <tcpOptions soReuseAddr="true"/>
-    </httpEndpoint>
+	<!-- Enable features -->
+	<featureManager>
+		<feature>jsp-2.2</feature>
+		<feature>localConnector-1.0</feature>
+		<feature>jdbc-4.1</feature>
+		<feature>jpa-2.0</feature>
+		<feature>jaxrs-1.1</feature>
+	</featureManager>
 
-    <application  name="acmeair" type="war" location="acmeair.war"/>
+	<!-- To access this server from a remote client add a host attribute to 
+		the following element, e.g. host="*" -->
+	<httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080">
+		<tcpOptions soReuseAddr="true" />
+	</httpEndpoint>
 
-    <jdbcDriver id="DerbyEmbedded" libraryRef="DerbyLib" />
-    <library id="DerbyLib" filesetRef="DerbyFileset" />
-    <fileset id="DerbyFileset"
-             dir="${shared.resource.dir}/derby"
-             includes="derby.jar" />
 
-    <dataSource id="jdbc/acmeairdatasource"
-                jndiName="jdbc/acmeairdatasource"
-                jdbcDriverRef="DerbyEmbedded">
-        <properties databaseName="acmeairdatabase"
-                    createDatabase="create" />
-    </dataSource>
+	<applicationMonitor updateTrigger="mbean" />
 
-    <dataSource id="jdbc/acmeairdatasourcenonjta"
-                jndiName="jdbc/acmeairdatasourcenonjta"
-                jdbcDriverRef="DerbyEmbedded"
-                transactional="false">
-        <properties databaseName="acmeairdatabase"
-                    createDatabase="create" />
-    </dataSource>
+	<webApplication id="acmeair-webapp" location="acmeair-webapp.war"
+		name="acmeair-webapp" />
 
+	<jdbcDriver id="DerbyEmbedded" libraryRef="DerbyLib" />
+	<library filesetRef="DerbyFileset" id="DerbyLib" />
+	<fileset id="DerbyFileset"
+		dir="/var/lib/jenkins/.m2/repository/org/apache/derby/derby/10.10.1.1"
+		includes="derby*.jar" />
+
+	<dataSource id="jdbc/acmeairdatasource" jdbcDriverRef="DerbyEmbedded"
+		jndiName="jdbc/acmeairdatasource">
+		<properties createDatabase="create" databaseName="acmeairdatabase" />
+	</dataSource>
+
+	<dataSource id="jdbc/acmeairdatasourcenonjta" jdbcDriverRef="DerbyEmbedded"
+		jndiName="jdbc/acmeairdatasourcenonjta" transactional="false">
+		<properties createDatabase="create" databaseName="acmeairdatabase" />
+	</dataSource>
 </server>
