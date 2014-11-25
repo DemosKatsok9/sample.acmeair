@@ -37,15 +37,18 @@ public class AcmeAirTest {
     public static void init() throws Exception {
         HttpClient client = new HttpClient();
         GetMethod method = new GetMethod(baseURL + "/rest/api/loader/loadSmall");
-        System.out.println("clientport :" + client.getHostConfiguration().getPort());
-        System.out.println("clienthost :" + client.getHostConfiguration().getHost());
-        System.out.println("clientproxy :" + client.getHostConfiguration().getProxyHost());
-        System.out.println("clientProtocol:" + client.getHostConfiguration().getProtocol());
+        
         System.out.println("methouri :" + method.getURI());
+        System.out.println("base :" + baseURL);
         System.out.println("metod host auth :" + method.getHostAuthState());
         Thread.sleep(60000);
         try {
             int statusCode = client.executeMethod(method);
+            System.out.println("metod host auth :" + method.getHostAuthState());
+            System.out.println("clientport :" + client.getHostConfiguration().getPort());
+            System.out.println("clienthost :" + client.getHostConfiguration().getHost());
+            System.out.println("clientproxy :" + client.getHostConfiguration().getProxyHost());
+            System.out.println("clientProtocol:" + client.getHostConfiguration().getProtocol());
             assertEquals("HTTP GET failed", HttpStatus.SC_OK, statusCode);
 
             String response = method.getResponseBodyAsString();            
