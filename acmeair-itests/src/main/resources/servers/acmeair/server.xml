@@ -19,8 +19,7 @@
 
 	<applicationMonitor updateTrigger="mbean" />
 
-	<application id="acmeair-webapp" location="acmeair-webapp.war"
-		name="acmeair-webapp" />
+	<application id="acmeair" location="acmeair.war" name="acmeair" />
 
 	<jdbcDriver id="DerbyEmbedded" libraryRef="DerbyLib" />
 	<library filesetRef="DerbyFileset" id="DerbyLib" />
