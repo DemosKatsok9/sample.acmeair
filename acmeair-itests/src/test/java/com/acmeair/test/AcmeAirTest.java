@@ -30,13 +30,19 @@ public class AcmeAirTest {
         
     static {
         String httpPort = System.getProperty("httpPort", "9081");
-        baseURL = "http://172.28.128.3:" + httpPort + "/acmeair";
+        baseURL = "http://localhost:" + httpPort + "/acmeair";
     }
     
     @BeforeClass
     public static void init() throws Exception {
         HttpClient client = new HttpClient();
         GetMethod method = new GetMethod(baseURL + "/rest/api/loader/loadSmall");
+        System.out.println("clientport :" + client.getHostConfiguration().getPort());
+        System.out.println("clienthost :" + client.getHostConfiguration().getHost());
+        System.out.println("clientproxy :" + client.getHostConfiguration().getProxyHost());
+        System.out.println("clientProtocol:" + client.getHostConfiguration().getProtocol());
+        System.out.println("methouri :" + method.getURI());
+        System.out.println("metod host auth :" + method.getHostAuthState());
         
         try {
             int statusCode = client.executeMethod(method);
