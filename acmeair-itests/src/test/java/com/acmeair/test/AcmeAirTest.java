@@ -30,14 +30,14 @@ public class AcmeAirTest {
         
     static {
         String httpPort = System.getProperty("httpPort", "9081");
-        baseURL = "http://localhost:" + httpPort + "/acmeair";
+        baseURL = "http://172.28.128.3:" + httpPort + "/acmeair";
     }
     
     @BeforeClass
     public static void init() throws Exception {
         HttpClient client = new HttpClient();
         GetMethod method = new GetMethod(baseURL + "/rest/api/loader/loadSmall");
-
+        
         try {
             int statusCode = client.executeMethod(method);
             assertEquals("HTTP GET failed", HttpStatus.SC_OK, statusCode);
