@@ -41,6 +41,7 @@ public class AcmeAirTest {
         System.out.println("methouri :" + method.getURI());
         System.out.println("base :" + baseURL);
         System.out.println("metod host auth :" + method.getHostAuthState());
+        System.out.println("sleep");
         Thread.sleep(60000);
         try {
             int statusCode = client.executeMethod(method);
