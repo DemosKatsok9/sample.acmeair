@@ -30,7 +30,7 @@ public class AcmeAirTest {
         
     static {
         String httpPort = System.getProperty("httpPort", "9081");
-        baseURL = "http://172.28.128.3:" + httpPort + "/acmeair";
+        baseURL = "http://localhost:" + httpPort + "/acmeair";
     }
     
     @BeforeClass
@@ -38,7 +38,9 @@ public class AcmeAirTest {
         HttpClient client = new HttpClient();
         GetMethod method = new GetMethod(baseURL + "/rest/api/loader/loadSmall");
         
+        System.out.println("client ip" + client.getHostConfiguration().getHost());
         System.out.println("methouri :" + method.getURI());
+        System.out.println("base :" + baseURL);
         System.out.println("base :" + baseURL);
         System.out.println("metod host auth :" + method.getHostAuthState());
         System.out.println("sleep");

@@ -148,7 +148,6 @@
 
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>
@@ -166,7 +165,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>                               
+                    </plugin>                    
 
                     <plugin>
                         <groupId>net.wasdev.wlp.maven.plugins</groupId>
@@ -181,7 +180,7 @@
                                 <configuration>
                                     <applications>acmeair</applications>
                                     <bootstrapProperties>   
-                                        <httpPort>${wlp.http.port}</httpPort>
+                                        <httpPort>${wlp.http.port}</httpPort>                                       
                                     </bootstrapProperties>
                                 </configuration>
                             </execution>
