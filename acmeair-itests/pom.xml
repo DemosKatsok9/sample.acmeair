@@ -173,13 +173,14 @@
 									<goal>start-server</goal>
 								</goals>
 								<configuration>
+									<clean>true</clean>
 									<applications>acmeair</applications>
 									<bootstrapProperties>
 										<httpPort>${wlp.http.port}</httpPort>
 									</bootstrapProperties>
 								</configuration>
 							</execution>
-							
+
 							<execution>
 								<id>stop-liberty-server</id>
 								<phase>post-integration-test</phase>
