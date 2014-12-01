@@ -108,15 +108,15 @@
                                 <artifactItem>
                                     <groupId>org.apache.derby</groupId>
                                     <artifactId>derby</artifactId>
-                                    <overWrite>false</overWrite>
+                                    <overWrite>true</overWrite>
                                     <outputDirectory>${project.build.directory}/usr/shared/resources/derby</outputDirectory>
-                                    <destFileName>derby.jar</destFileName>
+                                    <destFileName>derby.jar</destFileName>                                    
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>com.acmeair</groupId>
                                     <artifactId>acmeair-webapp</artifactId>
                                     <type>war</type>
-                                    <overWrite>false</overWrite>
+                                    <overWrite>true</overWrite>
                                     <outputDirectory>${project.build.directory}/usr/servers/acmeair/apps</outputDirectory>
                                     <destFileName>acmeair.war</destFileName>
                                 </artifactItem>
