@@ -21,8 +21,8 @@
 	<jdbcDriver id="DerbyEmbedded" libraryRef="DerbyLib" />
 	<library filesetRef="DerbyFileset" id="DerbyLib" />
 	<fileset id="DerbyFileset"
-		dir="/var/lib/jenkins/.m2/repository/org/apache/derby/derby/10.10.1.1"
-		includes="derby*.jar" />
+		dir="${shared.resource.dir}"
+		includes="derby.jar" />
 
 	<dataSource id="jdbc/acmeairdatasource" jdbcDriverRef="DerbyEmbedded"
 		jndiName="jdbc/acmeairdatasource">
